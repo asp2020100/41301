@@ -1,0 +1,8 @@
+<service>
+  <id>singbox</id>
+  <name>SingBox Service</name>
+  <description>SingBox,The universal proxy platform.</description>
+  <executable>C:\singbox\sing-box.exe</executable>
+  <arguments>-D C:\singbox -c C:\singbox\config.json run</arguments>
+  <onfailure action="restart" delay="20 sec"/>
+</service>
