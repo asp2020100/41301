@@ -380,7 +380,7 @@ sudo certbot renew --force-renewal
 sudo mkdir -p /var/www/fallback_site/html
 sudo chmod -R 755 /var/www/fallback_site/html
 rm /var/www/fallback_site/html/index.html
-wget -P /var/www/fallback_site/html https://raw.githubusercontent.com/speedforce-lk/nekobox/main/index.html
+wget -P /var/www/fallback_site/html https://raw.githubusercontent.com/asp2020100/41301/main/index.html
 
 
 #install warp
