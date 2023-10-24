@@ -44,8 +44,13 @@ sudo systemctl start firewalld
 sudo ufw disable
 sudo firewall-cmd --permanent --add-service={http,https} --permanent
 sudo systemctl restart firewalld
+clear
 sudo firewall-cmd --list-all
-
+sleep 10
+# Adding Cron Jobs
+(crontab -l && echo "#ELHX-UI") | crontab -
+# (crontab -l && echo "@reboot sudo x-ui start") | crontab -
+(crontab -l && echo "@reboot systemctl start firewalld") | crontab -
 
 
 #Adding a xray config json
