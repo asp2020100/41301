@@ -10,5 +10,5 @@ Copy Down Warp Config
 02. Install Script
 
 ```
-
+wget https://github.com/asp2020100/41301/raw/main/install.sh, chmod 777 install.sh, ./install.sh
 ```
