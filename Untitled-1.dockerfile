@@ -1,0 +1,1 @@
+post_hook = cp /etc/letsencrypt/live/racknerd-ccf4c0.duckdns.org/fullchain.pem /etc/xray/xray.crt && cp /etc/letsencrypt/live/racknerd-ccf4c0.duckdns.org/privkey.pem /etc/xray/xray.key && chmod 666 /etc/xray/xray.key && service xray restart

@@ -1,136 +1,135 @@
 {
-    "log": {
-      "disabled": true
-    },
-    "dns": {
-      "servers": [
-        {
-          "tag": "google",
-          "address": "tcp://8.8.4.4",
-          "detour": "BFM"
-        }
-      ],
-      "rules": [
-        {
-          "clash_mode": "direct",
-          "server": "local"
-        }
-      ],
-      "strategy": "ipv4_only",
-      "final": "google"
-    },
-    "inbounds": [
+  "log": {
+    "disabled": true
+  },
+  "dns": {
+    "servers": [
       {
-        "type": "tun",
-        "interface_name": "SingBox",
-        "inet4_address": "172.19.0.1/30",
-        "inet6_address": "fdfe:dcba:9876::1/126",
-        "stack": "mixed",
-        "mtu": 1500,
-        "auto_route": true,
-        "strict_route": true,
-        "sniff": true,
-        "sniff_override_destination": false
+        "tag": "google",
+        "address": "tcp://8.8.4.4",
+        "detour": "BFM"
       }
     ],
-    "outbounds": [
-      {
-        "type": "direct",
-        "tag": "direct"
-      },
-      {
-        "type": "block",
-        "tag": "block"
-      },
-      {
-        "type": "dns",
-        "tag": "dns-out"
-      },
-      {
-        "tag": "BFM",
-        "type": "selector",
-        "outbounds": [
-          "D-0",
-          "D-0-WARP"
-        ]
-      },
-      { 
-        "type": "vless",
-        "tag": "D-0",
-        "server": "13.225.0.89",
-        "server_port": 443,
-        "uuid": "$UUID1",
-        "tls": {
-          "enabled": true,
-          "disable_sni": true,
-          "insecure": true,
-          "max_version": "1.2"
-        },
-        "transport": {
-          "type": "ws",
-          "path": "/websocket",
-          "headers": {
-            "Host": "$cfdomain",
-            "User-Agent": [
-              "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-            ]
-          },
-          "early_data_header_name": "Sec-WebSocket-Protocol"
-        },
-        "packet_encoding": "xudp"
-      },
-      { 
-        "type": "vless",
-        "tag": "D-0-WARP",
-        "server": "13.225.0.89",
-        "server_port": 443,
-        "uuid": "$UUID3",
-        "tls": {
-          "enabled": true,
-          "disable_sni": true,
-          "insecure": true,
-          "max_version": "1.2"
-        },
-        "transport": {
-          "type": "ws",
-          "path": "/websocket",
-          "headers": {
-            "Host": "$cfdomain",
-            "User-Agent": [
-              "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-            ]
-          },
-          "early_data_header_name": "Sec-WebSocket-Protocol"
-        },
-        "packet_encoding": "xudp"
-      }
-    ],
-  "route": {
-    "final": "BFM",
     "rules": [
       {
         "clash_mode": "direct",
-        "outbound": "direct"
-      },
-      {
-        "protocol": "dns",
-        "outbound": "dns-out"
-      },
-      {
-        "protocol": [
-          "quic"
-        ],
-        "outbound": "block"
+        "server": "local"
       }
     ],
-    "auto_detect_interface": true
+    "strategy": "ipv4_only",
+    "final": "google"
   },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "localhost:9090",
-      "external_ui": "./yacd-gh-pages",
-      "store_selected": true
+  "inbounds": [
+    {
+      "type": "tun",
+      "interface_name": "SingBox",
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fdfe:dcba:9876::1/126",
+      "stack": "mixed",
+      "mtu": 1500,
+      "auto_route": true,
+      "strict_route": true,
+      "sniff": true,
+      "sniff_override_destination": false
     }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "tag": "BFM",
+      "type": "selector",
+      "outbounds": [
+        "D-0",
+        "D-0-WARP"
+      ]
+    },
+    { 
+      "type": "vless",
+      "tag": "D-0",
+      "server": "13.225.0.89",
+      "server_port": 443,
+      "uuid": "75acb451-59df-471a-bd94-54f193b637e8",
+      "tls": {
+        "enabled": true,
+        "disable_sni": true,
+        "insecure": true,
+        "max_version": "1.2"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/websocket",
+        "headers": {
+          "Host": "d1mgnkyoyq77tq.cloudfront.net",
+          "User-Agent": [
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+          ]
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    },
+    { 
+      "type": "vless",
+      "tag": "D-0-WARP",
+      "server": "13.225.0.89",
+      "server_port": 443,
+      "uuid": "9533fa02-52d9-4a19-b485-fdecbd99ae03",
+      "tls": {
+        "enabled": true,
+        "disable_sni": true,
+        "insecure": true,
+        "max_version": "1.2"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/websocket",
+        "headers": {
+          "Host": "d1mgnkyoyq77tq.cloudfront.net",
+          "User-Agent": [
+            "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+          ]
+        },
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      },
+      "packet_encoding": "xudp"
+    }
+  ],
+"route": {
+  "final": "BFM",
+  "rules": [
+    {
+      "clash_mode": "direct",
+      "outbound": "direct"
+    },
+    {
+      "protocol": "dns",
+      "outbound": "dns-out"
+    },
+    {
+      "protocol": [
+        "quic"
+      ],
+      "outbound": "block"
+    }
+  ],
+  "auto_detect_interface": true
+},
+"experimental": {
+  "clash_api": {
+    "external_controller": "localhost:9090",
+    "external_ui": "./yacd-gh-pages",
+    "store_selected": true
   }
-  }
-  
+}
+}
